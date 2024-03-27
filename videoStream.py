@@ -1,6 +1,7 @@
 import cv2 as cv
 import numpy as np
 from perspectiveTransform import *
+from laneDetection import *
 
 def videoStreamProcess(port):
     # open video
@@ -31,13 +32,13 @@ def videoStreamProcess(port):
             # procFrame=curveCenter(rectFrame)
 
         #bottom left
-        p1 = [490, 620]
+        p1 = [420, 700]
         #top left
-        p2 = [840, 500]
+        p2 = [760, 500]
         #top right
-        p3 = [1000, 500]
+        p3 = [1040, 500]
         #bottom right
-        p4 = [1220, 620]
+        p4 = [1320, 700]
 
         # replace mask
         try:
@@ -67,11 +68,15 @@ def videoStreamProcess(port):
         image = cv2.polylines(frame, [pts],
                               isClosed, color, thickness)
 
+        showFrame = genesis(procFrame)
+
         # Display the resulting frame
         cv.imshow('frame', frame)
         try:
-            cv.imshow('nay',procFrame)
+            cv.imshow('show',showFrame)
+
         except:
+            print("NYEEEEOW")
             pass
         if cv.waitKey(1) == ord('q'):
             break

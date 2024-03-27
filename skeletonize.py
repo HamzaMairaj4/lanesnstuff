@@ -3,7 +3,8 @@ import numpy as np
 
 def spookyScary(frame):
     # Threshold for monotone
-    ret, frame = cv.threshold(frame, 127, 255, 0)
+
+    ret, frame = cv.threshold(frame, 127, 255, cv.THRESH_BINARY)
 
     # Create empty skeleton
     size = np.size(frame)
@@ -22,12 +23,13 @@ def spookyScary(frame):
         # Erode and refine
         erodeFrame = cv.erode(frame, element)
         skele = cv.bitwise_or(skele, tempFrame)
-        frame = erodeFrame.copy()
+        lame = erodeFrame.copy()
 
-        if cv.countNonZero(frame) == 0:
-            break
+        try:
+            if cv.countNonZero(frame) == 0:
+                break
 
-        cv.imshow("Skeleton",skele)
-        cv.waitKey(0)
-        return skele
+        except: pass
+
+        return [skele, frame]
 

@@ -9,14 +9,13 @@ def genesis(frame):
         # cv.waitKey(0)
 
         gausFrame = cv.GaussianBlur(grayFrame, (3, 3), 5)
+        # skeleFrame = spookyScary(gausFrame)
         # cv.imshow('frame', gausFrame)
         # cv.waitKey(0)
 
-        nayFrame = cv.Canny(gausFrame,55,20)
+        nayFrame = cv.Canny(gausFrame,18,130,0)
         # cv.imshow('frame',nayFrame)
         # cv.waitKey(0)
-
-        nayFrame = spookyScary(nayFrame)
 
         lineys = cv.HoughLinesP(nayFrame, 1, np.pi / 90, 81,maxLineGap=5)
         # xv = []
