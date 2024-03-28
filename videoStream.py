@@ -34,9 +34,9 @@ def videoStreamProcess(port):
         #bottom left
         p1 = [420, 700]
         #top left
-        p2 = [760, 500]
+        p2 = [725, 500]
         #top right
-        p3 = [1040, 500]
+        p3 = [1025, 500]
         #bottom right
         p4 = [1320, 700]
 
