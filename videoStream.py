@@ -68,12 +68,15 @@ def videoStreamProcess(port):
         image = cv2.polylines(frame, [pts],
                               isClosed, color, thickness)
 
-        showFrame = genesis(procFrame)
+        try:
+            frames = genesis(procFrame)
 
         # Display the resulting frame
-        cv.imshow('frame', frame)
-        try:
-            cv.imshow('show',showFrame)
+            cv.imshow('frame', frames[1])
+            try:
+                cv.imshow('show',frames[0])
+            except:
+                pass
 
         except:
             print("NYEEEEOW")
